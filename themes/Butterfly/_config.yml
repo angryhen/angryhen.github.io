@@ -303,7 +303,7 @@ since: 2020
 footer_custom_text:
 
 footer_copyright:
-  enable: true
+  enable: false
 
 ICP:
   enable: false

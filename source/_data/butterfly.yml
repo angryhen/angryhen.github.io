@@ -304,7 +304,7 @@ since: 2018
 footer_custom_text: More and More
 
 footer_copyright:
-  enable: true
+  enable: false
 
 ICP:
   enable: false
@@ -439,7 +439,7 @@ canvas_ribbon:
 # 動態彩帶
 canvas_ribbon_piao:
   enable: true
-  mobile: false # false 手機端不顯示 true 手機端顯示
+  mobile: true # false 手機端不顯示 true 手機端顯示
 
 # canvas_nest
 # https://github.com/hustcc/canvas-nest.js
@@ -539,7 +539,7 @@ subtitle:
 # fontawesome圖標
 # 默認使用的是 fontawesome v4版本的圖標
 fontawesome_v5:
-  enable: false
+  enable: true
 
 # 加載動畫 Loading Animation
 preloader: false
