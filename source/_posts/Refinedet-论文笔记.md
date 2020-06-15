@@ -18,7 +18,7 @@ https://www.jianshu.com/p/19896a763d1f
 
 论文地址：https://arxiv.org/pdf/1711.06897.pdf
 # 摘要
-![Abstract.png](https://upload-images.jianshu.io/upload_images/15147802-fe88be05c46d2ad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Abstract.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231656)
 
 其中主要说了：
 **1**.包括了两个模块:anchor refinement mododule (**ARM**),
@@ -46,7 +46,7 @@ https://www.jianshu.com/p/19896a763d1f
 >**使用两阶段特征来描述对象***
 
 ## Refinedet 架构
-![Refinedet架构.png](https://upload-images.jianshu.io/upload_images/15147802-5ea767c2b7280843.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Refinedet架构.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231724)
 
 >*Specifically, it achieves 85.8% and 86.8% mAPs on VOC2007 and 2012, with VGG-16 network. Meanwhile, it outperforms the previously best published results from bothone-stage and two-stage approaches by achieving 41.8% AP4 on MS COCO test-dev with ResNet-101. In ad3The features in the ARM focus on
 >distinguishing positive anchors from background. We design the TCB to transfer the features in the ARMto handle the more challenging tasks in the ODM, i.e., predict accurate object locations, sizes and multi-class labels. Based on the evaluation protocol in MS COCO [29], AP is the sindition, RefineDet is time efficient, i.e., it runs at 40.2 FPS and 24.1 FPS on a NVIDIA Titan X GPU with the input sizes 320 × 320 and 512 × 512 in inference.*
@@ -80,11 +80,11 @@ https://www.jianshu.com/p/19896a763d1f
 **ODM**是由跟随在预测层（生成分类对象的分数和相对形状偏移的refined anchor box 的笛卡尔坐标）后面的TCBs的输出组成
 
 ## Transfer Connection Block(TCB)
-![TCB.png](https://upload-images.jianshu.io/upload_images/15147802-96b5943d887b66f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![TCB.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231742)
 
 &#160; &#160; &#160; &#160; 为了建立ARM和ODM的联系，我们引入TCB来将ARM中的特征图转换到ODM中，这样ODM可以共享ARM的特征。值得注意的是，从ARM中，我们只在与anchors有联系的特征图上使用TCBs。
 　　TCB的另一个功能是通过向传输的特征添加高级特征来集成大规模的上下文，以提高检测精度。 为了匹配它们之间的尺寸，我们使用反卷积操作来放大高级特征图并以元素方式对它们求和。 然后，我们在求和之后添加卷积层以确保检测特征的可辨性
-![TCBS.png](https://upload-images.jianshu.io/upload_images/15147802-8c56b7b14df19870.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![TCBS.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231750)
 
 >该网络主要有三个特点 
 >1）利用TCB模块进行类似FPN 的特征融合，提高低层语义信息，有利于小物体检测 
@@ -108,8 +108,10 @@ https://www.jianshu.com/p/19896a763d1f
 简单的说就是通过数据增强使得模型更具鲁棒性，随机扩展并裁剪原始训练图像，随机光度失真和翻转生成训练样本。 Please refer to [ssd]http://www.cs.unc.edu/~wliu/papers/ssd.pdf for more details.
 
 ## Backbone Network
-![Backbone Network.png](https://upload-images.jianshu.io/upload_images/15147802-e8b555ddba3d8c2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Backbone Network.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231804)
+
 骨干网络使用了在ILSVRC CLS-LOC上预先训练的VGG-16和ResNet-101，同时也可以在其他的预训练网络上working*(such as Inception V2 [22], Inception ResNet [44], and ResNeXt101 )*。
+
 >*we convert fc6 and fc7 of VGG-16 to convolution layers conv fc6 and conv fc7 via subsampling parameters
 >Meanwhile, to capture high-level information and drive object detection at multiple scales,we also add two extra convolution layers (i.e., conv6 1 and conv6 2) to the end of the truncated VGG-16 and one extra residual block (i.e., res6) to the end of the truncated ResNet101, respectively.*
 
@@ -118,15 +120,18 @@ https://www.jianshu.com/p/19896a763d1f
 >**对conv4_3以及conv5_3添加了L2 normalization层，并分别设置scale为10和8，并在反向传播中学习scale上**
 
 附上VGG16和ResNet-101的结构图
-![VGG-16.png](https://upload-images.jianshu.io/upload_images/15147802-1d42e5209af92d12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![ResNet-50.jpg](https://upload-images.jianshu.io/upload_images/15147802-fa0fd5492ba47b71.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![VGG-16.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231821)
+![ResNet-50.jpg]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231828)
 
 ####Anchors Design and Matching
-![Anchors Design and Matching.png](https://upload-images.jianshu.io/upload_images/15147802-0a12a9c310bfce73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![Anchors Design and Matching.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231840)
+
 Anchor的设计跟SSD也是比较相似的，不同的是，这里只在4个feature layer上面提取Anchor，分别对应stride为（8，16，32，64），并且不同的feature layer匹配不同大小及尺寸的anchor，scale是stride的4倍即对应的检测尺度为，*以320为例子，对应的不同的layer检测的图像尺度为：[ 32， 64， 128， 256 ]，aspect ratio 有3个（0.5，1，2）*,同时，在训练期间阶段，我们确定之间的对应关系基于anchors和ground truth boxes的jaccard重叠率（IoU），并端到端地训练整个网络。具体来说，我们首先将每个ground truth boxes与具有最佳重叠分数的anchor boxes相匹配，然后匹配anchor重叠高于0.5的任何ground truth boxes。
 
 ## Hard Negative Mining
-![Hard Negative Mining.png](https://upload-images.jianshu.io/upload_images/15147802-0888ee1dda493d7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Hard Negative Mining.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231907)
+
 在匹配步骤之后，大部分anchor boxex都是负样本的，即使在ARM时过滤了很多，类似于SSD的做法，用hard negative mining来设定正负样本的比例（一般设定为1:3），负样本不是随机选的，而是根据box的分类**loss排序**来选的，按照指定比例选择**loss最高**的那些负样本即可
 
 ####Loss Function
@@ -138,7 +143,7 @@ Anchor的设计跟SSD也是比较相似的，不同的是，这里只在4个feat
 需要注意的是:
 　　　虽然本文大致上是RPN网络和SSD的结合，但是在Faster R-CNN算法中RPN网络和检测网络的训练可以分开也可以end to end，而这里的训练方
 式就纯粹是end to end了，ARM和ODM两个部分的损失函数都是**一起向前传递**的。 
-![Loss.png](https://upload-images.jianshu.io/upload_images/15147802-b0df81a942aac4d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Loss.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231932)
 
 >$p_i$和$x_i$代表ARM中anchor分类的置信度和回归的坐标
 >$c_i$ 和 $t_i$代表ODM中refined anchor分类的置信度和坐标回归
@@ -153,11 +158,11 @@ Anchor的设计跟SSD也是比较相似的，不同的是，这里只在4个feat
 >$g^*_i$   代表第$i$个anchor的ground truth位置和大小
 
 需要注意的是下面这一点：
-![notably.png](https://upload-images.jianshu.io/upload_images/15147802-b243d45b68917080.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![notably.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231957)
 
 ## Optimization
-![
-Optimization.png](https://upload-images.jianshu.io/upload_images/15147802-b34c92fff1b4dd52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Optimization.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615232006)
+
  VGG-16：新添加的卷积层(onv6_1和conv6_2)，用xavier初始化参数
 ResNet-101：新添加的residual block, 采用均值为0，方差为0.01的高斯分布进行初始化
 
@@ -180,9 +185,9 @@ ResNet-101：新添加的residual block, 采用均值为0，方差为0.01的高�
 
 作者的backbone采用VGG16（the conv4_3, conv5_3, conv fc7, and conv6_2 feature layers）和Resnet101(res3b3, res4b22, res5c, and res6)作为ARM的四个蓝色框
 参考源码自定义ARM输出层为：
-![output.png](https://upload-images.jianshu.io/upload_images/15147802-351076ad2117cc7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![output.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615232048)
 
 >*需要注意：fc6和fc7采用conv层替代，conv6 的输入为32×32，采用dilated方式；conv7采用11卷积，输出32×32，同时增加5个类似ssd的conv输出层*
 
 在此附上SSD的结构，易于对比：
-![SSD.png](https://upload-images.jianshu.io/upload_images/15147802-7bd7b2a87cdadeb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![SSD.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615232105)
