@@ -115,3 +115,41 @@ markdown_it_plus:
       enable: true
       options:
         strict: false
+
+# live-2d
+live2d:
+  enable: true
+  scriptFrom: jsdelivr # local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-haruto # npm-module package name
+    # use: wanko # 博客根目录/live2d_models/ 下的目录名
+    # use: ./wives/wanko # 相对于博客根目录的路径
+    # use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url
+    scale: 1
+    hHeadPos: 0.5
+    vHeadPos: 0.618
+  display:
+    superSample: 2
+    position: right # right
+    width: 150
+    height: 300
+    hOffset: 20
+    vOffset: -90
+  mobile:
+    show: true
+    scale: 1
+  react:
+    opacityDefault: 0.3
+    opacityOnHover: 0.3
+    opacity: 0.95          # 模型透明度
+    
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml

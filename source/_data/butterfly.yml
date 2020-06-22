@@ -29,7 +29,7 @@ menu:
 
 # Highlight theme
 # ---------------
-highlight_theme: darker # default / darker / pale night / light / ocean
+highlight_theme: default # default / darker / pale night / light / ocean
 highlight_copy: true #代碼複製按鈕
 highlight_lang: true #代碼語言顯示
 highlight_shrink: false # true 全部代碼框不展開，需點擊 '>' 打開 / false 代碼框展開，有'>'點擊按鈕 | none 代碼框展開，不顯示 '>' 按鈕
@@ -89,7 +89,7 @@ katex:
   enable: true
   # true 表示每一頁都加載katex.js
   # false 需要時加載，須在使用的Markdown Front-matter 加上 katex: true
-  per_page: false
+  per_page: true
   hide_scrollbar: true
 
 # mermaid
@@ -228,7 +228,7 @@ disqus:
 # API 申請地址：https://disqus.com/api/applications/
 # 與 disqus 共用樣式
 disqusjs:
-  enable: true
+  enable: false
   shortname:
   siteName:
   apikey:
@@ -257,15 +257,15 @@ gitalk:
 
 # valine comment system. https://valine.js.org
 valine:
-  enable: false # if you want use valine,please set this value is true
-  appId: # leancloud application app id
-  appKey: # leancloud application app key
+  enable: true # if you want use valine,please set this value is true
+  appId: yK0khwL3xk0y4HgXzr1SJY7E-gzGzoHsz # leancloud application app id
+  appKey: lOTkhcMsEc9e0v72a67VNEmj # leancloud application app key
   notify: false # valine mail notify (true/false) Deprecated in v1.4.0+
   verify: false # valine verify code (true/false) Deprecated in v1.4.0+
   pageSize: 10 # comment list page size
   avatar: monsterid # gravatar style https://valine.js.org/#/avatar
   lang: en # i18n: zh-CN/zh-TW/en/ja
-  placeholder: Please leave your footprints # valine comment input placeholder(like: Please leave your footprints )
+  placeholder: 来呀！快活呀！~ # valine comment input placeholder(like: Please leave your footprints )
   guest_info: nick,mail,link #valine comment header info
   recordIP: false # Record reviewer IP
   serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
@@ -392,7 +392,7 @@ theme_color:
   paginator: "#00c4b6"
   button_hover: "#FF7242"
   text_selection: "#00c4b6"
-  link_color: "#49b1f5"
+  link_color: "#1E90FF"   # 超链接字体颜色
   meta_color: "#858585"
   hr_color: "#A4D8FA"
   code_foreground: "#F47466"
@@ -601,11 +601,11 @@ translate:
   #延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,默認為0
   translateDelay: 0
   #博客網址
-  cookieDomain: 'https://xxx/'
+  cookieDomain: 'https://www.copain.cc/'
   #當文字是簡體時，按鈕顯示的文字
   msgToTraditionalChinese: '繁'
   #當文字是繁體時，按鈕顯示的文字
-  msgToSimplifiedChinese: '简体'
+  msgToSimplifiedChinese: '简'
 
 #閲讀模式
 readmode:
@@ -620,7 +620,7 @@ darkmode:
   # autoChangeMode: 1  跟隨系統而變化，不支持的瀏覽器/系統將按照時間晚上6點到早上6點之間切換為 dark mode
   # autoChangeMode: 2  只按照時間晚上6點到早上6點之間切換為 dark mode
   # autoChangeMode: false 取消自動切換
-  autoChangeMode: 1
+  autoChangeMode: false
 
 ####    other     ####
 #------------------------------------------------

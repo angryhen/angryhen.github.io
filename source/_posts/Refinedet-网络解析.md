@@ -3,7 +3,7 @@ title: "Refinedet 网络解析"
 date: 2018-12-30 18:10:23
 tags: '论文解读'
 categories: '目标检测'
-keywords: '算法'
+keywords: '深度学习'
 description: '接着上一篇refinedet，瓷片主要解析一下网络结构'
 top_img: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=551013663,1774317073&fm=26&gp=0.jpg
 cover: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=551013663,1774317073&fm=26&gp=0.jpg
@@ -13,10 +13,10 @@ cover: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=551013663,17743
 https://www.jianshu.com/p/5504f4188d52
 
 &#160; &#160; &#160; &#160;纸上学来终觉浅，继上次读完Refinedet论文后，理论上理解了其中的原理，后面主要花了些功夫阅读了源码，理解整个网络的数据流程。
-![image.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/15147802-3b4727aa40bc1ff7.png)
+![]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/15147802-3b4727aa40bc1ff7.png)
 
 &#160; &#160; &#160; &#160;照例先上论文中的架构图，在此我对里面做了一些标注
-![image.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/15147802-136ece825ad8184b.png)
+![]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/15147802-136ece825ad8184b.png)
 上面是ARM里4个特征图的Size，左边为320x320，右边为512x512的原图像输入
 
 网络改动的地方，是在VGG16的"pool5"之后，添加了**conv fc6，conv fc7，conv6_1以及conv6_2**，还有**ODM的[P6, P5, P4, P3]**, 其中
@@ -28,7 +28,7 @@ https://www.jianshu.com/p/5504f4188d52
 >1.应该同样存在信息损失的情况，传统conv如果stride为1，则会有一部分重叠，而dilation conv极大减少这点
 >2.主要为了在不损失信息的情况下增大感受野，而扩大conv的尺寸也可以，但参数会变得更多，而且conv的增大和感受野的增大是线性，但dilation conv和感受野是指数增长
 
-![image.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615230921)
+![]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615230921)
 
 ## --conv fc7
 
@@ -45,13 +45,13 @@ ODM部分主要通过TCB模块转换而成，回顾一下TCB的流程：
 
 
 
-![image.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615230933)
+![]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615230933)
 
 Input （上方的箭头）为**ARM[conv 4_3，conv5_3，conv fc7，conv6_2]**，输出分别对应了**ODM[P3, P4, P5, P6]**
 **deconv**这一步，传入的实际是[P4 , P5 , P6]，
 根据网络的架构图，我们不难看出，**P6** 是 首先生成的，而conv6_2的输出已经是最高的feature map所以在conv6_2  到 P6 的TCB，没有deconv这个操作（如下图所示）
 
-![image.png]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231002)
+![]( https://cdn.jsdelivr.net/gh/angryhen/picgo_blog_img/blog/20200615231002)
 
 
 

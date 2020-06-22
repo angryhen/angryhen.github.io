@@ -3,7 +3,7 @@ title: "Refinedet-论文笔记"
 date: 2018-12-28 17:50:42
 tags: '论文解读'
 categories: '目标检测'
-keywords: '算法'
+keywords: '深度学习'
 description: 'Refinedet 是CVPR2018的一篇论文，本人水平不高，在目标检测方面接触不多，仅以此文记录学习过程，主要内容在于对原文paper的翻译以及一些借鉴与解读'
 top_img: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=551013663,1774317073&fm=26&gp=0.jpg
 cover: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=551013663,1774317073&fm=26&gp=0.jpg
